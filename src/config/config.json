@@ -5,7 +5,7 @@
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
-    "logo": "/images/logo.png",
+    "logo": "",
     "logo_width": "160px",
     "logo_height": "32px",
     "logo_text": "Beancount Notes"
