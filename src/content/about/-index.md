@@ -1,23 +1,21 @@
 ---
-title: "I’m John Doe, A content writer based in LDN, Currently at Bookworm"
-meta_title: "About"
-image: "/images/author.png"
+title: "關於這個 Blog"
+meta_title: "關於 — Beancount 學習筆記"
 draft: false
 
 what_i_do:
-  title: "What I Do"
+  title: "關於這裡"
   items:
-  - title: "Content Writing"
-    description: "Purus eget ipsum elementum venenatis, quis rutrum mi semper nonpurus eget ipsum elementum venenatis."
-  
-  - title: "Photography"
-    description: "Aenean maximus urna magna elementum, quis rutrum mi semper non purus eget ipsum venenatis."
-  
-  - title: "Web Research"
-    description: "Aenean maximus urna magna elementum venenatis, quis semper non purus eget ipsum venenatis."
-
+    - title: "Beancount 學習筆記"
+      description: "把學雙式記帳、beancount 語法、自動化工具的過程寫下來。"
+    - title: "個人知識庫"
+      description: "以個人筆記為主，偶爾整理成可分享的文章。"
+    - title: "繁體中文"
+      description: "全站用繁體中文撰寫。"
 ---
 
-A content writer with over 12 years experience working across brand identity, publishing and digital products. Maecenas sit amet purus eget ipsum elementum venenatis. Aenean maximus urna magna elementum venenatis quis non purus.
+這個 blog 是 chialin 的 beancount 學習筆記。
 
-Purus eget ipsum elementum venenatis. Aenean maximus urna magna elementum venenatis, quis rutrum mi semper non purus eget ipsum elementum venenatis, aenean maximus urna magna elementum.
+把學雙式記帳、語法、自動化工具的過程寫下來，給自己當複習，也給之後在學的人少踩一些雷。
+
+更個人化的生活紀錄請見 [blog.chialin.me](https://blog.chialin.me)。

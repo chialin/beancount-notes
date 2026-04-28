@@ -22,3 +22,6 @@ package-lock.json
 
 # ignore .astro directory
 .astro
+
+# claude code local settings (personal, not shared)
+.claude/settings.local.json

@@ -32,8 +32,12 @@
     "gtm_id": ""
   },
 
+  "contactinfo": {
+    "email": "scarlett.shih@proton.me"
+  },
+
   "params": {
     "contact_form_action": "#",
-    "footer_content": "© 2026 chialin · 用 Astro + Bookworm Light 打造"
+    "copyright": "© 2026 chialin · 用 Astro + Bookworm Light 打造"
   }
 }

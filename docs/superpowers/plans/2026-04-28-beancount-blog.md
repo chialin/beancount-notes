@@ -104,7 +104,7 @@ npm run dev
 - `src/config/menu.json` — 導覽選單
 - `src/config/social.json` — 社群連結（清空）
 
-- [ ] **Step 3.1：編輯 `src/config/config.json`**
+- [x] **Step 3.1：編輯 `src/config/config.json`**
 
 把 `site.title`、`site.base_url`、`site.description`、`site.author`、`metadata` 等改成符合本站：
 
@@ -149,7 +149,7 @@ npm run dev
 
 > 註：保留 template 中其他既有欄位（如 `disqus`、`google_tag_manager` 等），把 `enable` 都設為 `false` 即可關閉
 
-- [ ] **Step 3.2：編輯 `src/config/menu.json` 簡化導覽**
+- [x] **Step 3.2：編輯 `src/config/menu.json` 簡化導覽**
 
 ```json
 {
@@ -167,7 +167,7 @@ npm run dev
 }
 ```
 
-- [ ] **Step 3.3：清空 `src/config/social.json` 的範例值**
+- [x] **Step 3.3：清空 `src/config/social.json` 的範例值**
 
 把預設的 facebook/twitter 等改成只留你實際使用的（或全留空）：
 
@@ -180,7 +180,12 @@ npm run dev
 
 > 主題會 iterate 此檔案產出 footer icons；保留 key 但 value 可以是空字串或實際 URL
 
-- [ ] **Step 3.4：再跑一次 dev server 確認改完沒壞**
+- [x] **Step 3.4：再跑一次 dev server 確認改完沒壞**
+
+> **實作備註**：
+> - `[方向調整]` social.json 原計畫的扁平 `{github, rss}` 結構不符 Bookworm theme 的 schema（footer 用 `social.main` 陣列搭 name/icon/link），改為陣列形式並用 `FaGithub` / `FaRss` icon。
+> - `[技術障礙]` 用 build 取代 dev server 驗證時，發現兩個 config 缺漏：(1) `params.copyright` 被誤寫成 `footer_content`（Footer.astro 讀的是 `copyright`）；(2) `contactinfo.{address,email,phone}` 被遺漏（contact.astro 解構這個欄位）。兩者皆已補上 stub。
+> - `[後續依賴]` Task 4 清理範例內容時可一併考慮是否刪除 `/contact` 頁與對應的 `src/content/contact/-index.md`；若刪除則 `config.contactinfo` stub 也可移除。
 
 ```bash
 npm run dev
@@ -201,7 +206,7 @@ Ctrl+C 停止。
 - `src/content/about/-index.md` — 改寫
 - `src/content/authors/` 下其他範例作者 — 刪除
 
-- [ ] **Step 4.1：列出現有 authors 資料夾**
+- [x] **Step 4.1：列出現有 authors 資料夾**
 
 ```bash
 ls -la src/content/authors/
@@ -209,7 +214,7 @@ ls -la src/content/authors/
 
 預期看到幾個範例 .md 檔（如 `john-doe.md`）。
 
-- [ ] **Step 4.2：建立自己的作者檔，刪除範例**
+- [x] **Step 4.2：建立自己的作者檔，刪除範例**
 
 先建立 `src/content/authors/chialin.md`：
 
@@ -243,7 +248,7 @@ ls src/content/authors/
 
 > 動手前列一遍清單，避免誤刪到 `-index.md` 之類的設定檔
 
-- [ ] **Step 4.3：刪除範例文章**
+- [x] **Step 4.3：刪除範例文章**
 
 ```bash
 ls src/content/posts/
@@ -253,7 +258,7 @@ ls src/content/posts/
 # 預期只剩 -index.md
 ```
 
-- [ ] **Step 4.4：改寫 `src/content/about/-index.md`**
+- [x] **Step 4.4：改寫 `src/content/about/-index.md`**
 
 打開檔案，把內文改寫為：
 
@@ -283,7 +288,7 @@ what_i_do:
 
 > 註：`what_i_do` 物件結構是 Bookworm Light about schema 要求的（Section 4 spec 沒詳細列，這裡依 template 的 schema）
 
-- [ ] **Step 4.5：跑一次 build 確認沒壞**
+- [x] **Step 4.5：跑一次 build 確認沒壞**
 
 ```bash
 npm run build
@@ -293,7 +298,7 @@ npm run build
 
 > 若 build error 提示 schema 缺欄位，依錯誤訊息補上對應欄位（通常是 about/contact 等需要必填的 metadata）
 
-- [ ] **Step 4.6：commit 階段成果**
+- [x] **Step 4.6：commit 階段成果**
 
 ```bash
 git add -A
