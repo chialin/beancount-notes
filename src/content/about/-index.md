@@ -19,4 +19,6 @@ what_i_do:
 
 把學複式記帳、語法、自動化工具的過程寫下來，給自己當複習，也給之後在學的人少踩一些雷。
 
-更個人化的生活紀錄請見 [blog.chialin.me](https://blog.chialin.me)。
+---
+
+內容由 chialin 與 Claude Opus 4.7（1M context）共同撰寫。
