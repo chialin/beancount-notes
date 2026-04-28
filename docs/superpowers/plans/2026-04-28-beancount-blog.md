@@ -519,13 +519,13 @@ curl -I https://beancount-notes.chialin.me
 
 **External:** Pages CMS ([app.pagescms.org](https://app.pagescms.org))
 
-- [ ] **Step 9.1：登入 Pages CMS（GitHub OAuth）**
+- [x] **Step 9.1：登入 Pages CMS（GitHub OAuth）**
 
 - 打開 [app.pagescms.org](https://app.pagescms.org)
 - 點 `Sign in with GitHub` → 授權 Pages CMS 讀寫 repo（首次才需要）
 - 授權範圍：選 `Only select repositories` → 加入 `chialin/beancount-notes`
 
-- [ ] **Step 9.2：在 Pages CMS 加入專案**
+- [x] **Step 9.2：在 Pages CMS 加入專案**
 
 - Dashboard → `Add a project`
 - 選 `chialin/beancount-notes` → 選 branch `main` → `Add`
