@@ -1,0 +1,39 @@
+{
+  "site": {
+    "title": "Beancount 學習筆記",
+    "base_url": "https://beancount.chialin.me",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.png",
+    "logo": "/images/logo.png",
+    "logo_width": "160px",
+    "logo_height": "32px",
+    "logo_text": "Beancount Notes"
+  },
+
+  "settings": {
+    "search": true,
+    "sticky_header": true,
+    "theme_switcher": true,
+    "default_theme": "system",
+    "pagination": 8,
+    "summary_length": 200,
+    "blog_folder": "posts"
+  },
+
+  "metadata": {
+    "meta_author": "chialin",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "我學習 beancount 與複式記帳的筆記與整理。"
+  },
+
+  "google_tag_manager": {
+    "enable": false,
+    "gtm_id": ""
+  },
+
+  "params": {
+    "contact_form_action": "#",
+    "footer_content": "© 2026 chialin · 用 Astro + Bookworm Light 打造"
+  }
+}
