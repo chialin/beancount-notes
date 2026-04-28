@@ -34,12 +34,12 @@ Beancount 學習筆記 — 個人知識庫，公開於 [beancount-notes.chialin.
 ## 本地開發
 
 ```bash
-npm install
-npm run dev      # http://localhost:4321
-npm run build    # 產出 dist/
+yarn install
+yarn dev      # http://localhost:4321
+yarn build    # 產出 dist/
 ```
 
-需要 Node.js 20+。
+需要 Node.js 20+。專案 lockfile 為 `yarn.lock`（`package-lock.json` 已加入 `.gitignore`）。
 
 ## 設計與計劃文件
 
