@@ -311,7 +311,7 @@ git commit -m "init: bootstrap Bookworm Light template + customize site metadata
 
 **Files created:** `.pages.yml`（repo 根目錄）
 
-- [ ] **Step 5.1：在 repo 根建立 `.pages.yml`**
+- [x] **Step 5.1：在 repo 根建立 `.pages.yml`**
 
 完整內容：
 
@@ -356,7 +356,9 @@ media:
   output: /src/assets
 ```
 
-- [ ] **Step 5.2：建立 `src/assets/` 與 `src/content/pages/` 資料夾（不存在則建）**
+- [x] **Step 5.2：建立 `src/assets/` 與 `src/content/pages/` 資料夾（不存在則建）**
+
+> **實作備註**：`src/content/pages/` 已存在且有 `elements.mdx`、`privacy-policy.md`，不需 `.gitkeep`；只在空的 `src/assets/` 放一份。
 
 ```bash
 mkdir -p src/assets src/content/pages
@@ -365,7 +367,7 @@ touch src/assets/.gitkeep src/content/pages/.gitkeep
 
 > Pages CMS 需要 `media.input` 路徑與 `pages` collection path 都實際存在
 
-- [ ] **Step 5.3：commit**
+- [x] **Step 5.3：commit**
 
 ```bash
 git add .pages.yml src/assets/.gitkeep src/content/pages/.gitkeep

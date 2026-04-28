@@ -1,0 +1,38 @@
+content:
+  - name: posts
+    label: 文章
+    type: collection
+    path: src/content/posts
+    filename: '{year}-{month}-{day}-{primary}.md'
+    view:
+      fields: [title, date, tags, draft]
+      sort: [date desc]
+    fields:
+      - { name: title, label: 標題, type: string, required: true }
+      - { name: meta_title, label: SEO 標題, type: string }
+      - { name: description, label: 摘要, type: text }
+      - { name: date, label: 發布日期, type: date, required: true }
+      - { name: image, label: 封面圖, type: image }
+      - name: tags
+        label: 標籤
+        type: string
+        list: true
+        options:
+          creatable: true
+          values: [記帳, 基礎]
+      - { name: categories, label: 分類, type: string, list: true, default: [notes], hidden: true }
+      - { name: authors, label: 作者, type: string, list: true, default: [chialin], hidden: true }
+      - { name: draft, label: 草稿, type: boolean, default: false }
+      - { name: body, label: 內文, type: rich-text }
+
+  - name: pages
+    label: 靜態頁面
+    type: collection
+    path: src/content/pages
+    fields:
+      - { name: title, type: string, required: true }
+      - { name: body, type: rich-text }
+
+media:
+  input: src/assets
+  output: /src/assets
