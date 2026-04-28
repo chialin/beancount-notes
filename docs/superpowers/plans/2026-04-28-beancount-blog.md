@@ -410,6 +410,13 @@ gh repo view chialin/beancount-notes --web
 
 **External:** Cloudflare Dashboard ([dash.cloudflare.com](https://dash.cloudflare.com))
 
+> **[方向調整] Pages → Workers Builds**：2026 年 Cloudflare 介面已主推 Workers Builds（搭 Static Assets）取代傳統 Pages 流程。實際採用後者：
+> - 走 `Compute (Workers)` → `Create` → `Connect to Git` 入口
+> - 設定欄位多了一個 `Deploy command`，預設 `npx wrangler deploy`，需要 repo 內有 `wrangler.jsonc`
+> - 模板 (Bookworm Light) 已內建 `wrangler.jsonc` 與 `package.json` 中的 `wrangler` v4 + `deploy:cf-workers` 等 scripts，僅需把 `name` 從 `bookworm-light-astro` 改為 `beancount-notes`
+> - 部署後預設網址是 `beancount-notes.<account-subdomain>.workers.dev`（不是 `*.pages.dev`），Task 8.1 的 CNAME `Answer` 改用此網址
+> - 其餘自訂網域、TLS 流程同 Pages
+
 - [ ] **Step 7.1：登入 Cloudflare → Workers & Pages → Create → Pages**
 
 導覽路徑：左側選單 `Workers & Pages` → 點 `Create application` → 選 `Pages` 分頁 → 點 `Connect to Git`
