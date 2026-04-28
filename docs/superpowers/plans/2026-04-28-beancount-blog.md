@@ -232,7 +232,7 @@ social:
 
 這個 blog 是學習過程中的筆記與心得整理，主題包含：
 
-- Beancount 語法與雙式記帳概念
+- Beancount 語法與複式記帳概念
 - 多幣別與投資紀錄
 - 加密貨幣記帳
 - 自動化工具
@@ -274,7 +274,7 @@ what_i_do:
   title: "關於這裡"
   items:
     - title: "Beancount 學習筆記"
-      description: "把學雙式記帳、beancount 語法、自動化工具的過程寫下來。"
+      description: "把學複式記帳、beancount 語法、自動化工具的過程寫下來。"
     - title: "個人知識庫"
       description: "以個人筆記為主，偶爾整理成可分享的文章。"
     - title: "繁體中文"
