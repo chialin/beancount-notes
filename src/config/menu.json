@@ -1,7 +1,7 @@
 {
   "main": [
     { "name": "首頁", "url": "/" },
-    { "name": "文章", "url": "/posts" },
+    { "name": "文章", "url": "/blog" },
     { "name": "標籤", "url": "/tags" },
     { "name": "關於", "url": "/about" }
   ],

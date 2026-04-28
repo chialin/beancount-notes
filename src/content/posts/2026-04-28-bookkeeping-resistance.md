@@ -2,7 +2,7 @@
 title: 記帳的阻力
 meta_title: beancount
 date: 2026-04-28
-image: /src/assets/IDG_20260323_145947_467.jpeg
+image: /images/IDG_20260323_145947_467.jpeg
 draft: false
 ---
 # 測試新文章使用 pages cms

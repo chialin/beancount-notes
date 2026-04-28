@@ -3,12 +3,13 @@ content:
     label: 文章
     type: collection
     path: src/content/posts
-    filename: '{year}-{month}-{day}-{primary}.md'
+    filename: '{year}-{month}-{day}-{fields.slug}.md'
     view:
       fields: [title, date, tags, draft]
       sort: [date desc]
     fields:
       - { name: title, label: 標題, type: string, required: true }
+      - { name: slug, label: URL slug（小寫英文/數字/連字號）, type: string, required: true, pattern: '^[a-z0-9-]+$' }
       - { name: meta_title, label: SEO 標題, type: string }
       - { name: description, label: 摘要, type: text }
       - { name: date, label: 發布日期, type: date, required: true }
@@ -34,5 +35,5 @@ content:
       - { name: body, type: rich-text }
 
 media:
-  input: src/assets
-  output: /src/assets
+  input: public/images
+  output: /images
