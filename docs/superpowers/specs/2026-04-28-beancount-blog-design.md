@@ -56,7 +56,7 @@
                                                  ▼
                                         ┌──────────────────┐
                                         │ Cloudflare       │
-                                        │ Pages (build)    │ ── deploy ──▶ beancount.chialin.me
+                                        │ Pages (build)    │ ── deploy ──▶ beancount-notes.chialin.me
                                         │ Astro 編譯        │
                                         └──────────────────┘
 ```
@@ -75,7 +75,7 @@
 | **主題** | **Bookworm Light Astro**（[github.com/themefisher/bookworm-light-astro](https://github.com/themefisher/bookworm-light-astro)） | MIT 授權免費、2026-04-23 仍在更新、用 Content Collections、frontmatter 命名清楚（`description` 而非怪名字） |
 | **CMS** | **Pages CMS**（[pagescms.org](https://pagescms.org)） | 100% 免費、零部署（用雲端版）、手機 UX 為設計核心、GitHub OAuth 整合 |
 | **部署** | **Cloudflare Pages** | 免費額度寬裕、自動從 GitHub 拉新 commit 重 build、HTTPS 自動 |
-| **網域** | **`beancount.chialin.me`**（DNS 在 Porkbun，加 CNAME 指向 Cloudflare Pages） | 子網域明確、不動到既有 chialin.me 的 nameserver |
+| **網域** | **`beancount-notes.chialin.me`**（DNS 在 Porkbun，加 CNAME 指向 Cloudflare Pages） | 子網域明確、不動到既有 chialin.me 的 nameserver |
 | **Obsidian 整合** | **本機 clone repo + Obsidian Git plugin** | 桌面 Obsidian 把 repo 當 vault 開，plugin 自動 pull/push |
 
 ### 故意不選的方案（決策紀錄）
@@ -234,7 +234,7 @@ Value: <project>.pages.dev    # 由 Cloudflare Pages 產生
 TTL:   600
 ```
 
-並在 Cloudflare Pages 後台「Custom domains」加入 `beancount.chialin.me`，Cloudflare 會自動驗證並核發 TLS 憑證。
+並在 Cloudflare Pages 後台「Custom domains」加入 `beancount-notes.chialin.me`，Cloudflare 會自動驗證並核發 TLS 憑證。
 
 **chialin.me 的 nameserver 不動，DNS 管理留在 Porkbun。**
 
@@ -345,7 +345,7 @@ TTL:   600
 完成此 spec 對應的實作後，應能：
 
 - [ ] 在手機瀏覽器打開 [app.pagescms.org](https://app.pagescms.org)，30 秒內貼圖 + 寫一段文字 + 發布
-- [ ] 30–60 秒後，內容出現在 `https://beancount.chialin.me`
+- [ ] 30–60 秒後，內容出現在 `https://beancount-notes.chialin.me`
 - [ ] 桌面打開 Obsidian，看到剛剛從手機寫的文章與圖片
 - [ ] Obsidian 改了一段文字，5 分鐘內自動同步到網站
 - [ ] `bean-check` 等既有工作流不受影響（新 repo 完全獨立）

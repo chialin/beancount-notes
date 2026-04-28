@@ -112,7 +112,7 @@ npm run dev
 {
   "site": {
     "title": "Beancount 學習筆記",
-    "base_url": "https://beancount.chialin.me",
+    "base_url": "https://beancount-notes.chialin.me",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "images/favicon.png",
@@ -460,6 +460,8 @@ gh repo view chialin/beancount-notes --web
 
 **External:** Porkbun ([porkbun.com/account/domains](https://porkbun.com/account/domains)) + Cloudflare Pages
 
+> **[方向調整] 子網域 `beancount` → `beancount-notes`**：實際設 CNAME 時 Porkbun 報錯 `Another record type already exists for that host`，dig 確認 `beancount.chialin.me` 已 CNAME 指向 `export-beancount-expenses.pages.dev`（既有匯出工具，仍在用，不能覆蓋）。改用 `beancount-notes.chialin.me` 作為本站網域（與 repo / Worker 同名，明確）；同步更新 `src/config/config.json` 的 `base_url`、spec、plan、README 等所有引用。
+
 - [ ] **Step 8.1：在 Porkbun 加 CNAME 記錄**
 
 - 登入 Porkbun → Domains → `chialin.me` → 點 `DNS Records`
@@ -477,7 +479,7 @@ gh repo view chialin/beancount-notes --web
 - [ ] **Step 8.2：等 DNS propagation（30–300 秒）**
 
 ```bash
-dig beancount.chialin.me CNAME +short
+dig beancount-notes.chialin.me CNAME +short
 ```
 
 預期：回傳 `beancount-notes.chialin-shr.workers.dev.`（前面可能還有別的 CNAME 中繼）
@@ -488,7 +490,7 @@ dig beancount.chialin.me CNAME +short
 
 - Cloudflare Dashboard → Pages → 點 `beancount-notes` project → `Custom domains` 分頁
 - 點 `Set up a custom domain`
-- 輸入 `beancount.chialin.me` → `Continue`
+- 輸入 `beancount-notes.chialin.me` → `Continue`
 - Cloudflare 會自動偵測 CNAME → 點 `Activate domain`
 
 - [ ] **Step 8.4：等 TLS 憑證核發（1–5 分鐘）**
@@ -498,12 +500,12 @@ Status 從 `Verifying` → `Active`。
 - [ ] **Step 8.5：驗證 https 可訪問**
 
 ```bash
-curl -I https://beancount.chialin.me
+curl -I https://beancount-notes.chialin.me
 ```
 
 預期：HTTP/2 200，header 含 `cf-cache-status` 等 Cloudflare 標記
 
-瀏覽器打開 `https://beancount.chialin.me` 應看到站台。
+瀏覽器打開 `https://beancount-notes.chialin.me` 應看到站台。
 
 ---
 
@@ -575,7 +577,7 @@ gh api repos/chialin/beancount-notes/commits --jq '.[0] | {sha, message, date: .
 
 - [ ] **Step 10.4：驗證文章上線**
 
-打開 `https://beancount.chialin.me`
+打開 `https://beancount-notes.chialin.me`
 
 預期：首頁出現「Hello, Beancount Notes」這篇文章卡片
 
@@ -673,7 +675,7 @@ git push
 - [ ] **Step 12.3：驗證上線**
 
 - 等 30–60 秒
-- 手機開 `https://beancount.chialin.me`
+- 手機開 `https://beancount-notes.chialin.me`
 - 應看到剛剛從手機寫的新文章卡片，圖片正常顯示
 
 - [ ] **Step 12.4：完成驗收清單（從 spec Section 12）**
@@ -681,7 +683,7 @@ git push
 逐項打勾：
 
 - [ ] 在手機瀏覽器打開 app.pagescms.org，30 秒內貼圖 + 寫一段文字 + 發布
-- [ ] 30–60 秒後，內容出現在 https://beancount.chialin.me
+- [ ] 30–60 秒後，內容出現在 https://beancount-notes.chialin.me
 - [ ] 桌面打開 Obsidian，看到剛剛從手機寫的文章與圖片（先 `git pull`）
 - [ ] Obsidian 改了一段文字，手動 push 後 5 分鐘內同步到網站
 - [ ] `bean-check` 等既有 accounting 工作流不受影響
@@ -698,7 +700,7 @@ git push
 ```markdown
 # beancount-notes
 
-Beancount 學習筆記 — 個人知識庫，公開於 [beancount.chialin.me](https://beancount.chialin.me)。
+Beancount 學習筆記 — 個人知識庫，公開於 [beancount-notes.chialin.me](https://beancount-notes.chialin.me)。
 
 ## 架構
 
@@ -744,7 +746,7 @@ git push
 全部 task 跑完後，最終狀態應該是：
 
 - ✅ GitHub repo `chialin/beancount-notes` 存在且公開
-- ✅ `https://beancount.chialin.me` 可訪問且有內容
+- ✅ `https://beancount-notes.chialin.me` 可訪問且有內容
 - ✅ `https://app.pagescms.org` 連接 repo，能新增/編輯文章
 - ✅ 本機有一份 clone repo，Obsidian 可開啟為 vault
 - ✅ 手機可在 60 秒內發布一篇含圖文章

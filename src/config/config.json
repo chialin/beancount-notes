@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Beancount 學習筆記",
-    "base_url": "https://beancount.chialin.me",
+    "base_url": "https://beancount-notes.chialin.me",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
