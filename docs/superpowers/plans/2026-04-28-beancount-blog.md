@@ -410,18 +410,18 @@ gh repo view chialin/beancount-notes --web
 
 **External:** Cloudflare Dashboard ([dash.cloudflare.com](https://dash.cloudflare.com))
 
-> **[方向調整] Pages → Workers Builds**：2026 年 Cloudflare 介面已主推 Workers Builds（搭 Static Assets）取代傳統 Pages 流程。實際採用後者：
-> - 走 `Compute (Workers)` → `Create` → `Connect to Git` 入口
-> - 設定欄位多了一個 `Deploy command`，預設 `npx wrangler deploy`，需要 repo 內有 `wrangler.jsonc`
-> - 模板 (Bookworm Light) 已內建 `wrangler.jsonc` 與 `package.json` 中的 `wrangler` v4 + `deploy:cf-workers` 等 scripts，僅需把 `name` 從 `bookworm-light-astro` 改為 `beancount-notes`
-> - 部署後預設網址是 `beancount-notes.<account-subdomain>.workers.dev`（不是 `*.pages.dev`），Task 8.1 的 CNAME `Answer` 改用此網址
-> - 其餘自訂網域、TLS 流程同 Pages
+> **[方向調整] Workers Builds → Cloudflare Pages（最終採用）**：實作期間試了兩條路：
+>
+> 1. **先試 Workers Builds**（2026 年 Cloudflare 主推流程）：建立成功，`https://beancount-notes.chialin-shr.workers.dev` 可訪問。但 Step 8.3 加 custom domain 時被擋 — `Only domains active on your Cloudflare account can be added`。Workers 的 Custom Domain 強制要求 zone 必須在 Cloudflare DNS 上。
+> 2. **改用 Cloudflare Pages**（與既有 `beancount.chialin.me` 走的路一致）：Pages Custom Domain 接受外部 DNS（Porkbun CNAME 留在 registrar），一次過。
+>
+> 最終採用 **Pages**；舊 Workers 專案手動刪除。Add Custom Domain 兩個入口的差異與正確選法詳見 [docs/notes/2026-04-28-cloudflare-pages-custom-domain.md](../../notes/2026-04-28-cloudflare-pages-custom-domain.md)。
 
-- [x] **Step 7.1：登入 Cloudflare → Compute (Workers) → Create → Import a repository**
+- [x] **Step 7.1：登入 Cloudflare → Workers & Pages → 建 Pages 專案（Connect to Git）**
 
-導覽路徑：左側選單 `Compute` → `Workers & Pages`（或新版 `Workers`）→ 點 `Create` → 選 `Import a repository`（Connect to Git）
+導覽路徑：左側 `Compute` → `Workers & Pages` → 列表頁 → `Create` → 切到 `Pages` 分頁 → `Connect to Git`
 
-> 若找不到入口，直接 deep link：`https://dash.cloudflare.com/?to=/:account/workers-and-pages`
+> 新版 UI 把 Workers Builds 推到前面，Pages 入口較不顯眼；找不到時試 deep link：`https://dash.cloudflare.com/?to=/:account/pages`
 
 - [x] **Step 7.2：授權 GitHub 整合（首次設定才需要）**
 
@@ -433,26 +433,25 @@ gh repo view chialin/beancount-notes --web
 
 | 欄位 | 值 |
 |------|------|
-| Project name | `beancount-notes`（要與 `wrangler.jsonc` 內 `name` 一致；workers.dev 子網域會是 `beancount-notes.<account-subdomain>.workers.dev`） |
+| Project name | `beancount-notes`（會變成 `beancount-notes.pages.dev`） |
 | Production branch | `main` |
+| Framework preset | **Astro** |
 | Build command | `npm run build` |
-| Deploy command | `npx wrangler deploy`（保持預設） |
+| Build output directory | `dist` |
 | Root directory | `/`（保持預設） |
 | Environment variables | 無 |
 
-> Workers Builds 不再有 `Framework preset` 與 `Build output directory` 欄位 — 後者由 `wrangler.jsonc` 的 `assets.directory` (`./dist`) 指定。
-
 - [x] **Step 7.4：點 `Save and Deploy`，等待第一次 build 完成**
 
-預期：build log 顯示 `npm install` → `npm run build` → `npx wrangler deploy` → `Success! Your project is deployed`，總耗時約 1–2 分鐘
+預期：build log 顯示 `npm install` → `npm run build` → `Success! Your project is deployed`，總耗時約 1–2 分鐘
 
 - [x] **Step 7.5：驗證 temporary URL 可訪問**
 
-打開 `https://beancount-notes.chialin-shr.workers.dev`（已驗證：HTTP/2 200，`cf-cache-status: HIT`，首頁顯示「Beancount 學習筆記」）
+打開 `https://beancount-notes.pages.dev`（已驗證 HTTP/2 200）
 
 預期：看到 Bookworm Light 樣式 + 「Beancount 學習筆記」站名 + 空白的文章列表（因為剛清空範例）
 
-> 若 build fail：到 Deployments 頁看 log，常見錯誤是 Node 版本太舊 → 在 Settings → Variables and Secrets 加 `NODE_VERSION=20`
+> 若 build fail：到 Deployments 頁看 log，常見錯誤是 Node 版本太舊 → 在 Settings → Environment variables 加 `NODE_VERSION=20`
 
 ---
 
@@ -462,7 +461,7 @@ gh repo view chialin/beancount-notes --web
 
 > **[方向調整] 子網域 `beancount` → `beancount-notes`**：實際設 CNAME 時 Porkbun 報錯 `Another record type already exists for that host`，dig 確認 `beancount.chialin.me` 已 CNAME 指向 `export-beancount-expenses.pages.dev`（既有匯出工具，仍在用，不能覆蓋）。改用 `beancount-notes.chialin.me` 作為本站網域（與 repo / Worker 同名，明確）；同步更新 `src/config/config.json` 的 `base_url`、spec、plan、README 等所有引用。
 
-- [ ] **Step 8.1：在 Porkbun 加 CNAME 記錄**
+- [x] **Step 8.1：在 Porkbun 加 CNAME 記錄**
 
 - 登入 Porkbun → Domains → `chialin.me` → 點 `DNS Records`
 - 點 `+ Add` 新增記錄：
@@ -470,42 +469,49 @@ gh repo view chialin/beancount-notes --web
 | 欄位 | 值 |
 |------|------|
 | Type | `CNAME` |
-| Host | `beancount` |
-| Answer | `beancount-notes.chialin-shr.workers.dev`（從 Task 7.5 來） |
+| Host | `beancount-notes` |
+| Answer | `beancount-notes.pages.dev`（從 Task 7.5 來） |
 | TTL | `600` |
 
 點 `Add Record`。
 
-- [ ] **Step 8.2：等 DNS propagation（30–300 秒）**
+- [x] **Step 8.2：等 DNS propagation（30–300 秒）**
 
 ```bash
 dig beancount-notes.chialin.me CNAME +short
 ```
 
-預期：回傳 `beancount-notes.chialin-shr.workers.dev.`（前面可能還有別的 CNAME 中繼）
+預期：回傳 `beancount-notes.pages.dev.`（前面可能還有別的 CNAME 中繼）
 
 > 若沒回傳：等 1–5 分鐘再試。Porkbun 通常很快。
 
-- [ ] **Step 8.3：在 Cloudflare Pages 加 custom domain**
+- [x] **Step 8.3：在 Cloudflare Pages 加 custom domain（外部 DNS 路徑）**
 
-- Cloudflare Dashboard → Pages → 點 `beancount-notes` project → `Custom domains` 分頁
-- 點 `Set up a custom domain`
-- 輸入 `beancount-notes.chialin.me` → `Continue`
-- Cloudflare 會自動偵測 CNAME → 點 `Activate domain`
+⚠️ **不要從** Cloudflare Dashboard 頂層 `Domains` 列表的 `Add domain` 進入 — 那是 zone-onboarding 精靈，會逼你把整個 `chialin.me` NS 搬到 Cloudflare（影響 blog Vercel、既有 Pages、email MX 等）。誤入後若還沒改 Porkbun 的 NS，到列表頁 `Remove Site` 即可，不留痕跡。
 
-- [ ] **Step 8.4：等 TLS 憑證核發（1–5 分鐘）**
+正確路徑：
+
+- `Workers & Pages` → 點 `beancount-notes` **Pages 專案**（不是 Worker）
+- 上方分頁切到 `Custom domains`
+- 點 `Set up a custom domain` → 輸入 `beancount-notes.chialin.me` → `Continue`
+- Setup Method 畫面**選右側 `My DNS provider` → `Begin CNAME setup`**（左側 `Cloudflare DNS` 等同 zone-onboarding，會卡 NS 切換）
+- Cloudflare 偵測既有 CNAME 通過 → 進 `Verifying`
+
+> 詳細決策與兩個入口差異見 [docs/notes/2026-04-28-cloudflare-pages-custom-domain.md](../../notes/2026-04-28-cloudflare-pages-custom-domain.md)
+
+- [x] **Step 8.4：等 TLS 憑證核發（1–5 分鐘）**
 
 Status 從 `Verifying` → `Active`。
 
-- [ ] **Step 8.5：驗證 https 可訪問**
+- [x] **Step 8.5：驗證 https 可訪問**
 
 ```bash
 curl -I https://beancount-notes.chialin.me
 ```
 
-預期：HTTP/2 200，header 含 `cf-cache-status` 等 Cloudflare 標記
+實際結果：HTTP/2 200，含 `cf-cache-status` Cloudflare header ✅
 
-瀏覽器打開 `https://beancount-notes.chialin.me` 應看到站台。
+瀏覽器打開 `https://beancount-notes.chialin.me` 看到站台。
 
 ---
 
