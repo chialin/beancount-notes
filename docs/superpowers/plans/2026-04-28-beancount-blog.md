@@ -380,7 +380,7 @@ git commit -m "feat: add Pages CMS config"
 
 **External:** GitHub
 
-- [ ] **Step 6.1：再跑一次 build 最終確認**
+- [x] **Step 6.1：再跑一次 build 最終確認**
 
 ```bash
 npm run build
@@ -388,7 +388,7 @@ npm run build
 
 預期：無 error。
 
-- [ ] **Step 6.2：push 到 origin/main**
+- [x] **Step 6.2：push 到 origin/main**
 
 ```bash
 git push -u origin main
@@ -396,7 +396,7 @@ git push -u origin main
 
 預期：成功推送，輸出 `branch 'main' set up to track 'origin/main'`
 
-- [ ] **Step 6.3：在 GitHub 上目視確認**
+- [x] **Step 6.3：在 GitHub 上目視確認**
 
 ```bash
 gh repo view chialin/beancount-notes --web
