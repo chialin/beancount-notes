@@ -417,39 +417,42 @@ gh repo view chialin/beancount-notes --web
 > - 部署後預設網址是 `beancount-notes.<account-subdomain>.workers.dev`（不是 `*.pages.dev`），Task 8.1 的 CNAME `Answer` 改用此網址
 > - 其餘自訂網域、TLS 流程同 Pages
 
-- [ ] **Step 7.1：登入 Cloudflare → Workers & Pages → Create → Pages**
+- [x] **Step 7.1：登入 Cloudflare → Compute (Workers) → Create → Import a repository**
 
-導覽路徑：左側選單 `Workers & Pages` → 點 `Create application` → 選 `Pages` 分頁 → 點 `Connect to Git`
+導覽路徑：左側選單 `Compute` → `Workers & Pages`（或新版 `Workers`）→ 點 `Create` → 選 `Import a repository`（Connect to Git）
 
-- [ ] **Step 7.2：授權 GitHub 整合（首次設定才需要）**
+> 若找不到入口，直接 deep link：`https://dash.cloudflare.com/?to=/:account/workers-and-pages`
+
+- [x] **Step 7.2：授權 GitHub 整合（首次設定才需要）**
 
 - 點 `Connect GitHub`
 - 在 GitHub 授權頁，選 `Only select repositories`，加入 `chialin/beancount-notes`
 - 回到 Cloudflare，repo 列表應出現 `beancount-notes`
 
-- [ ] **Step 7.3：選 repo 並設 build configuration**
+- [x] **Step 7.3：選 repo 並設 build configuration**
 
 | 欄位 | 值 |
 |------|------|
-| Project name | `beancount-notes`（會變成 `beancount-notes.pages.dev`） |
+| Project name | `beancount-notes`（要與 `wrangler.jsonc` 內 `name` 一致；workers.dev 子網域會是 `beancount-notes.<account-subdomain>.workers.dev`） |
 | Production branch | `main` |
-| Framework preset | **Astro** |
 | Build command | `npm run build` |
-| Build output directory | `dist` |
+| Deploy command | `npx wrangler deploy`（保持預設） |
 | Root directory | `/`（保持預設） |
 | Environment variables | 無 |
 
-- [ ] **Step 7.4：點 `Save and Deploy`，等待第一次 build 完成**
+> Workers Builds 不再有 `Framework preset` 與 `Build output directory` 欄位 — 後者由 `wrangler.jsonc` 的 `assets.directory` (`./dist`) 指定。
 
-預期：build log 顯示 `npm install` → `npm run build` → `Success! Your project is deployed`，總耗時約 1–2 分鐘
+- [x] **Step 7.4：點 `Save and Deploy`，等待第一次 build 完成**
 
-- [ ] **Step 7.5：驗證 temporary URL 可訪問**
+預期：build log 顯示 `npm install` → `npm run build` → `npx wrangler deploy` → `Success! Your project is deployed`，總耗時約 1–2 分鐘
 
-打開 `https://beancount-notes.pages.dev`（網址在 Cloudflare 後台 project 頁顯示）
+- [x] **Step 7.5：驗證 temporary URL 可訪問**
+
+打開 `https://beancount-notes.chialin-shr.workers.dev`（已驗證：HTTP/2 200，`cf-cache-status: HIT`，首頁顯示「Beancount 學習筆記」）
 
 預期：看到 Bookworm Light 樣式 + 「Beancount 學習筆記」站名 + 空白的文章列表（因為剛清空範例）
 
-> 若 build fail：到 Deployments 頁看 log，常見錯誤是 Node 版本太舊 → 在 Settings → Environment variables 加 `NODE_VERSION=20`
+> 若 build fail：到 Deployments 頁看 log，常見錯誤是 Node 版本太舊 → 在 Settings → Variables and Secrets 加 `NODE_VERSION=20`
 
 ---
 
@@ -466,7 +469,7 @@ gh repo view chialin/beancount-notes --web
 |------|------|
 | Type | `CNAME` |
 | Host | `beancount` |
-| Answer | `beancount-notes.pages.dev`（從 Task 7.5 來） |
+| Answer | `beancount-notes.chialin-shr.workers.dev`（從 Task 7.5 來） |
 | TTL | `600` |
 
 點 `Add Record`。
@@ -477,7 +480,7 @@ gh repo view chialin/beancount-notes --web
 dig beancount.chialin.me CNAME +short
 ```
 
-預期：回傳 `beancount-notes.pages.dev.`（前面可能還有別的 CNAME 中繼）
+預期：回傳 `beancount-notes.chialin-shr.workers.dev.`（前面可能還有別的 CNAME 中繼）
 
 > 若沒回傳：等 1–5 分鐘再試。Porkbun 通常很快。
 
