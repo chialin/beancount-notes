@@ -1,6 +1,7 @@
 ---
 title: "關於這個 Blog"
 meta_title: "關於 — Beancount 學習筆記"
+image: "/images/about-cover.png"
 draft: false
 
 what_i_do:
