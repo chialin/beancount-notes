@@ -3,6 +3,7 @@ title: Beancount 常用 CLI 工具速查
 meta_title: bean-check / bean-query / bean-format / fava
 description: 整理 beancount 安裝後內建的幾個 CLI 工具與 fava，包含驗證、查詢、格式對齊與網頁介面的常用指令。
 date: 2026-04-28
+image: /images/posts/2026-04-28/2026-04-28-beancount-cli-tools.jpg
 tags: [基礎, 工具]
 categories: [notes]
 authors: [chialin]

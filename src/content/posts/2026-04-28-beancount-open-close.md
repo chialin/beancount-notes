@@ -3,6 +3,7 @@ title: Beancount 的 open 與 close — 帳戶開立與關閉
 meta_title: Beancount open / close 入門
 description: 介紹 beancount 中宣告帳戶的 open 與 close 指令、語法與常見錯誤。
 date: 2026-04-28
+image: /images/posts/2026-04-28/2026-04-28-beancount-open-close.jpg
 tags: [基礎, 記帳]
 categories: [notes]
 authors: [chialin]
