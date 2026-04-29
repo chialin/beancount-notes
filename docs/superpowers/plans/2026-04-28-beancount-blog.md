@@ -35,7 +35,7 @@
 ```bash
 gh repo create chialin/beancount-notes \
   --public \
-  --description "Beancount 學習筆記 — 個人知識庫"
+  --description "Beancount 記帳手記 — 個人知識庫"
 ```
 
 預期輸出：`✓ Created repository chialin/beancount-notes on GitHub`
@@ -111,7 +111,7 @@ npm run dev
 ```json
 {
   "site": {
-    "title": "Beancount 學習筆記",
+    "title": "Beancount 記帳手記",
     "base_url": "https://beancount-notes.chialin.me",
     "base_path": "/",
     "trailing_slash": false,
@@ -191,7 +191,7 @@ npm run dev
 npm run dev
 ```
 
-預期：localhost:4321 看到「Beancount 學習筆記」標題與新導覽選單
+預期：localhost:4321 看到「Beancount 記帳手記」標題與新導覽選單
 
 Ctrl+C 停止。
 
@@ -265,7 +265,7 @@ ls src/content/posts/
 ```markdown
 ---
 title: "關於這個 Blog"
-meta_title: "關於 — Beancount 學習筆記"
+meta_title: "關於 — Beancount 記帳手記"
 description: "為什麼有這個 blog、寫些什麼、誰在寫"
 image: ""
 draft: false
@@ -273,7 +273,7 @@ draft: false
 what_i_do:
   title: "關於這裡"
   items:
-    - title: "Beancount 學習筆記"
+    - title: "Beancount 記帳手記"
       description: "把學複式記帳、beancount 語法、自動化工具的過程寫下來。"
     - title: "個人知識庫"
       description: "以個人筆記為主，偶爾整理成可分享的文章。"
@@ -281,7 +281,7 @@ what_i_do:
       description: "全站用繁體中文撰寫。"
 ---
 
-這個 blog 是 chialin 的 beancount 學習筆記。
+這個 blog 是 chialin 的 beancount 記帳手記。
 
 更個人化的生活紀錄請見 [blog.chialin.me](https://blog.chialin.me)。
 ```
@@ -449,7 +449,7 @@ gh repo view chialin/beancount-notes --web
 
 打開 `https://beancount-notes.pages.dev`（已驗證 HTTP/2 200）
 
-預期：看到 Bookworm Light 樣式 + 「Beancount 學習筆記」站名 + 空白的文章列表（因為剛清空範例）
+預期：看到 Bookworm Light 樣式 + 「Beancount 記帳手記」站名 + 空白的文章列表（因為剛清空範例）
 
 > 若 build fail：到 Deployments 頁看 log，常見錯誤是 Node 版本太舊 → 在 Settings → Environment variables 加 `NODE_VERSION=20`
 
@@ -706,7 +706,7 @@ git push
 ```markdown
 # beancount-notes
 
-Beancount 學習筆記 — 個人知識庫，公開於 [beancount-notes.chialin.me](https://beancount-notes.chialin.me)。
+Beancount 記帳手記 — 個人知識庫，公開於 [beancount-notes.chialin.me](https://beancount-notes.chialin.me)。
 
 ## 架構
 

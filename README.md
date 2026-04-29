@@ -1,6 +1,6 @@
 # beancount-notes
 
-Beancount 學習筆記 — 個人知識庫，公開於 [beancount-notes.chialin.me](https://beancount-notes.chialin.me)。
+Beancount 記帳手記 — 個人知識庫，公開於 [beancount-notes.chialin.me](https://beancount-notes.chialin.me)。
 
 ## 架構
 
