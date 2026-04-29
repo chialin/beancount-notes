@@ -6,7 +6,7 @@ date: 2026-04-28
 image: /images/posts/2026-04-28/2026-04-28-beancount-cli-tools.jpg
 tags: [基礎, 工具]
 categories: [notes]
-authors: [chialin]
+authors: [chialin, AI]
 draft: false
 ---
 
