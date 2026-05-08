@@ -17,8 +17,8 @@ draft: false
 ## 基本語法
 
 ```beancount
-2024-01-01 open Assets:Bank:Cathay              TWD
-2024-01-01 open Liabilities:CreditCard:Citi     TWD
+2024-01-01 open Assets:Bank:Main                TWD
+2024-01-01 open Liabilities:CreditCard:Main     TWD
 2024-01-01 open Income:Salary                   TWD
 2024-01-01 open Expenses:Food                   TWD
 ```
