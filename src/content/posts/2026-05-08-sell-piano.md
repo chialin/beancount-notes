@@ -21,7 +21,7 @@ draft: false
   Expenses:Hobbies:Music         20,000.00 TWD
   Assets:Bank:Main              -20,000.00 TWD
 ```
-原本直覺以為，賣出的錢應該去沖銷當初那筆花費——像在減少一個鋼琴相關的資產。
+原本直覺以為，賣出的錢應該去沖銷當初那筆花費，像在減少一個鋼琴相關的資產。
 但**這台電鋼琴不會在資產表上**。買的當下就全數記為花費，所以帳簿裡找不到 `Assets:Equipment:Piano` 這種項目。
 
 這代表現在賣出時，沒有「資產要移除」這件事或是沖銷。
@@ -58,11 +58,11 @@ draft: false
 - **「賣二手物」是獨立事件**。以後不管賣什麼舊東西，都能在 `Income:Other:UsedGoods` 一覽，不會跟原本的興趣花費混在一起。
 - **報表更直覺**。賣出的錢是收入，不是「花費的反義」。
 
-唯一適合做法 2 的情境，大概是**買進當年就賣掉**——例如三月買、八月轉售，當年度的花費就直接抵掉，比較不會誤讀過去的紀錄。
+唯一適合做法 2 的情境，大概是**買進當年就賣掉**。例如三月買、八月轉售，當年度的花費就直接抵掉，比較不會誤讀過去的紀錄。
 
 ## 開帳戶
 
-如果還沒開過 `Income:Other:UsedGoods`，記得先 [open](/blog/2026-04-28-beancount-open-close/)：
+如果還沒開過 `Income:Other:UsedGoods`，記得先 [open](/blog/2026-04-28-beancount-open-close)：
 
 ```beancount
 2026-05-08 open Income:Other:UsedGoods    TWD
@@ -73,6 +73,6 @@ draft: false
 
 ## 延伸：為什麼當初是 Expense 而不是 Asset？
 
-這篇講的是「當初記為 Expense」的情境。但同樣一台電鋼琴，也可以記成 `Assets:Equipment:Piano`，賣出時的記法就完全不同——要把資產移除、認列買賣損益。
+這篇講的是「當初記為 Expense」的情境。但同樣一台電鋼琴，也可以記成 `Assets:Equipment:Piano`，賣出時的記法就完全不同，要把資產移除、認列買賣損益。
 
 什麼東西該記成 Asset、什麼直接當 Expense？這讓我好奇到底有沒有其他物品是列成資產的決策？下篇繼續討論。

@@ -27,7 +27,7 @@ draft: false
 
 帳戶名的第一段必須是五大根帳戶之一：`Assets`、`Liabilities`、`Income`、`Expenses`、`Equity`。後面用冒號 `:` 分階層，想開幾層都可以，例如 `Expenses:Food:Eatout` 就是「外食」分類。
 
-最後的 `TWD` 是這個帳戶允許出現的貨幣。寫上去之後，如果某天交易把別的幣別塞進來，[`bean-check`](/blog/2026-04-28-beancount-cli-tools/) 會發出 warning，防止不同幣別混用的問題。
+最後的 `TWD` 是這個帳戶允許出現的貨幣。寫上去之後，如果某天交易把別的幣別塞進來，[`bean-check`](/blog/2026-04-28-beancount-cli-tools) 會發出 warning，防止不同幣別混用的問題。
 
 ## Close 帳戶
 
